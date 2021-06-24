@@ -57,5 +57,8 @@
       "pre-commit": "lint-staged"
     }
   },
-  "keywords": []
+  "keywords": [],
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
 }
