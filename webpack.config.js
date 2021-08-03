@@ -1,8 +1,9 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 const port = process.env.PORT || 3000;
+const __dirname = path.resolve();
 
-module.exports = (env) => {
+const module = (env) => {
   const isDevelopment = env === 'isDevelopment';
 
   return {
@@ -78,7 +79,7 @@ module.exports = (env) => {
 
     plugins: [
       new HtmlWebpackPlugin({
-        template: 'public/index.html',
+        template: 'index.html',
       }),
     ],
 
@@ -92,3 +93,5 @@ module.exports = (env) => {
     },
   };
 };
+
+export default module;
