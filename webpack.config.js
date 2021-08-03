@@ -1,5 +1,6 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 const port = process.env.PORT || 3000;
 const __dirname = path.resolve();
 
@@ -57,6 +58,7 @@ const module = (env) => {
         {
           test: /\.css$/,
           use: ['style-loader', 'css-loader'],
+          exclude: /node_modules/
         },
       ],
     },
@@ -81,6 +83,9 @@ const module = (env) => {
       new HtmlWebpackPlugin({
         template: 'index.html',
       }),
+      new MiniCssExtractPlugin({
+        filename: 'style.css',
+      })
     ],
 
     devServer: {
