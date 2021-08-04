@@ -1,21 +1,13 @@
 export default class Loader {
   constructor({ $app, isLoading }) {
     this.isLoading = isLoading;
-    this.loaderWrapper = document.createElement('div');
-    this.loaderWrapper.className = 'loader-wrapper';
-    $app.appendChild(this.loaderWrapper);
-    this.render();
-  }
+    this.$target = document.createElement('div');
+    this.$target.classList.add('loader-wrapper', 'reveal');
+    $app.appendChild(this.$target);
 
-  setState(status) {
-    this.isLoading = status;
-    this.render();
-  }
-
-  render() {
     const loader = document.createElement('div');
     loader.className = 'cat';
-    this.loaderWrapper.appendChild(loader);
+    this.$target.appendChild(loader);
 
     ['cat__body', 'cat__body', 'cat__tail', 'cat__head'].forEach(
       (className) => {
@@ -24,11 +16,13 @@ export default class Loader {
         loader.appendChild(div);
       },
     );
+  }
 
-    if (this.isLoading) {
-      this.loaderWrapper.removeAttribute('style');
+  setState(state) {
+    if (state) {
+      this.$target.classList.add('reveal');
     } else {
-      this.loaderWrapper.setAttribute('style', 'display: none !important;');
+      this.$target.classList.remove('reveal');
     }
   }
 }
