@@ -1,4 +1,4 @@
-import TypeError from "./TypeError.js";
+import TypeError from './TypeError.js';
 
 export default class ApiError extends TypeError {
   constructor(message, type, status) {

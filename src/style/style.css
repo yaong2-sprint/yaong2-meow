@@ -16,8 +16,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .result-section {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25px;
 }
 
 img {
