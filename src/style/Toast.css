@@ -1,0 +1,29 @@
+/* https://marshall-ku.tistory.com/307 */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  padding: 15px 20px;
+  transform: translate(-50%, 10px);
+  border-radius: 30px;
+  overflow: hidden;
+  font-size: 0.8rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0.5s, transform 0.5s;
+  background: #d9598c;
+  color: #fff;
+  z-index: 10000;
+}
+
+.toast.reveal {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.toast .closeBtn {
+  cursor: pointer;
+  font-weight: 700;
+  margin-left: 10px;
+}
