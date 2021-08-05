@@ -1,28 +1,38 @@
 export default class Loader {
-  constructor({ $app, isLoading }) {
-    this.isLoading = isLoading;
-    this.$target = document.createElement('div');
-    this.$target.classList.add('loader-wrapper', 'reveal');
-    $app.appendChild(this.$target);
+  constructor($target) {
+    this.$wrapper = document.createElement('div');
+    this.$wrapper.classList.add('loader-wrapper', 'reveal');
+    $target.appendChild(this.$wrapper);
 
-    const loader = document.createElement('div');
-    loader.className = 'cat';
-    this.$target.appendChild(loader);
+    // 초기 상태 설정
+    this.setState({
+      isLoading: true,
+    });
 
+    this.render(); // 렌더링
+  }
+
+  setState(nextState) {
+    this.$state = { ...this.$state, ...nextState };
+    this.render();
+  }
+
+  render() {
+    if (this.$state.isLoading) {
+      this.$wrapper.classList.add('reveal');
+    } else {
+      this.$wrapper.classList.remove('reveal');
+    }
+    this.$wrapper.innerHTML = '';
+    const $loader = document.createElement('div');
+    $loader.className = 'cat';
+    this.$wrapper.appendChild($loader);
     ['cat__body', 'cat__body', 'cat__tail', 'cat__head'].forEach(
       (className) => {
         const div = document.createElement('div');
         div.className = className;
-        loader.appendChild(div);
+        $loader.appendChild(div);
       },
     );
-  }
-
-  setState(state) {
-    if (state) {
-      this.$target.classList.add('reveal');
-    } else {
-      this.$target.classList.remove('reveal');
-    }
   }
 }

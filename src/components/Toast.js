@@ -1,34 +1,30 @@
 export default class Toast {
-  constructor({ $app, message, toggle }) {
-    this.message = message;
-    this.toggle = toggle;
-    this.$target = document.createElement('div');
-    this.$target.className = 'toast';
-    $app.appendChild(this.$target);
+  constructor($target, $props) {
+    this.$props = $props;
+    this.$wrapper = document.createElement('div');
+    this.$wrapper.className = 'toast';
+    $target.appendChild(this.$wrapper);
     this.render();
   }
 
   offToggle() {
-    this.$target.classList.remove('reveal');
-    this.toggle = false;
-  }
-
-  setState(state) {
-    this.message = state.message;
-    if (state.toggle) this.$target.classList.add('reveal');
-    setTimeout(this.offToggle.bind(this), 1500);
-    this.render();
+    this.$wrapper.classList.remove('reveal');
   }
 
   render() {
-    this.$target.innerHTML = '';
+    this.$wrapper.classList.add('reveal');
+    setTimeout(this.offToggle.bind(this), 1500);
+    this.$wrapper.innerHTML = '';
     const span = document.createElement('span');
     span.className = 'closeBtn';
     span.innerHTML = '&times;';
     span.addEventListener('click', this.offToggle.bind(this));
     const message = document.createElement('span');
-    message.textContent = this.message;
-    this.$target.appendChild(message);
-    this.$target.appendChild(span);
+    message.textContent = this.$props.message;
+    this.$wrapper.appendChild(message);
+    this.$wrapper.appendChild(span);
+    setTimeout(() => {
+      this.$wrapper.remove();
+    }, 2000);
   }
 }

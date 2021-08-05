@@ -1,72 +1,21 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
 import SearchSection from './components/SearchSection.js';
-import DescriptionSection from './components/DescriptionSection.js';
-import GallerySection from './components/GallerySection.js';
+import ResultSection from './components/ResultSection.js';
 import Loader from './components/Loader.js';
-import api from './api/TheCatAPI.js';
-import Toast from './components/Toast.js';
 
 export default class App {
-  constructor($app) {
-    this.$state = {
-      isLoading: true,
-      breedData: null,
-      imageData: null,
-      breeds: new Map(),
-    };
+  constructor($app, $globalState) {
+    this.$state = $globalState;
 
-    const loader = new Loader({
-      $app,
-      isLoading: this.$state.isLoading,
+    const searchSection = new SearchSection($app, {
+      setLoaderState: (nextState) => {
+        loader.setState(nextState);
+      },
     });
 
-    const setLoaderState = (nextState) => {
-      loader.setState(nextState);
-    };
+    const resultSection = new ResultSection($app);
 
-    const searchRandomCat = () => {
-      setLoaderState(true);
-      const response = api.getRandomCats();
-      response.then((data) => {
-        gallerySection.setState(data);
-      });
-      setLoaderState(false);
-    };
-
-    const searchSpecificCat = (id) => {
-      setLoaderState(true);
-      const imageResponse = api.getSpecificCats(id);
-      imageResponse.then((data) => {
-        gallerySection.setState(data);
-        descriptionSection.setState(data);
-        setLoaderState(false);
-      });
-    };
-
-    const setToastMessage = (nextState) => {
-      toast.setState(nextState);
-    };
-
-    const searchSection = new SearchSection({
-      $app,
-      breeds: this.$state.breeds,
-      result: this.$state.imageData,
-      isLoading: this.$state.isLoading,
-      searchRandomCat,
-      searchSpecificCat,
-      setLoaderState,
-      setToastMessage,
-    });
-
-    const descriptionSection = new DescriptionSection($app);
-
-    const gallerySection = new GallerySection($app);
-
-    const toast = new Toast({
-      $app,
-      message: '',
-      toggle: false,
-    });
+    const loader = new Loader($app);
   }
 }

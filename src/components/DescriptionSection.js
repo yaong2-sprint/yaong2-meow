@@ -1,37 +1,30 @@
 export default class DescriptionSection {
-  constructor($app) {
-    this.$target = document.createElement('section');
-    this.$target.classList.add('description-section', 'mount');
-    $app.appendChild(this.$target);
-  }
-
-  setState(nextState) {
-    this.$state = nextState;
+  constructor($target, $props) {
+    this.$props = $props;
+    this.$wrapper = document.createElement('section');
+    this.$wrapper.classList.add('description-section', 'mount');
+    $target.appendChild(this.$wrapper);
     this.render();
   }
 
   render() {
-    this.$target.innerHTML = '';
-    console.log(this.$state);
-    const [breedData] = this.$state[0].breeds;
-    console.log(breedData);
-
+    this.$wrapper.innerHTML = '';
     const descriptionBox = document.createElement('article');
     descriptionBox.classList.add('description-box');
-    if (!breedData) {
+    if (!this.$props.breedInfo) {
       descriptionBox.innerHTML = `
       <h2>죄송합니다.</h2>
       <p>이 종에 대한 상세 정보는 제공되지 않습니다.</p>
     `;
     } else {
       descriptionBox.innerHTML = `
-      <h2>${breedData.name}</h2>
-      <p>${breedData.description}</p>
+      <h2>${this.$props.breedInfo?.name}</h2>
+      <p>${this.$props.breedInfo?.description}</p>
       <h3>Statistics</h3>
     `;
     }
 
-    this.$target.appendChild(descriptionBox);
-    this.$target.classList.remove('mount');
+    this.$wrapper.appendChild(descriptionBox);
+    this.$wrapper.classList.remove('mount');
   }
 }

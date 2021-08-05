@@ -1,73 +1,90 @@
+/* eslint-disable no-new */
 import api from '../api/TheCatAPI.js';
+import DescriptionSection from './DescriptionSection.js';
+import GallerySection from './GallerySection.js';
+import Toast from './Toast.js';
 
 export default class SearchSection {
-  constructor({
-    $app,
-    breeds,
-    result,
-    isLoading,
-    searchRandomCat,
-    searchSpecificCat,
-    setLoaderState,
-    setToastMessage,
-  }) {
-    this.state = { breeds, result, isLoading };
-    this.onSearch = { searchRandomCat, searchSpecificCat };
-    this.setLoaderState = setLoaderState;
-    this.setToastMessage = setToastMessage;
-    this.$target = document.createElement('section');
-    this.$target.className = 'search-section';
-    $app.appendChild(this.$target);
+  constructor($target, $props) {
+    this.$props = $props;
+    this.$wrapper = document.createElement('section');
+    this.$wrapper.className = 'search-section';
+    $target.appendChild(this.$wrapper);
+
+    // 초기 상태 설정
+    this.setState({
+      breeds: new Map(),
+    });
+
     api.getBreeds().then((data) => {
       data.forEach((breed) => {
-        // if (!breed.name.includes(' ') && !breed.name.includes('-'))
-        this.state.breeds.set(breed.name, breed.id);
+        this.$state.breeds.set(breed.name, breed.id);
       });
-      this.render();
-      setLoaderState(false);
+      this.render(); // 렌더링
+      this.$props.setLoaderState({ isLoading: false });
+      if (this.selectBox) this.selectBox.focus();
     });
   }
 
+  onSearch(id) {
+    this.$props.setLoaderState({ isLoading: true });
+    api.getSpecificCats(id).then((data) => {
+      const resultSection = document.querySelector('.result-section');
+      resultSection.innerHTML = '';
+      new DescriptionSection(resultSection, {
+        breedInfo: data[0].breeds[0],
+      });
+      new GallerySection(resultSection, {
+        imgList: data,
+      });
+      this.$props.setLoaderState({ isLoading: false });
+    });
+  }
+
+  setEvent() {
+    const { value } = this.selectBox;
+    if (!value) {
+      new Toast(document.querySelector('#app'), {
+        message: '검색어가 입력되지 않았습니다.',
+      });
+      return;
+    }
+    const convertedValue = value[0].toUpperCase() + value.slice(1);
+    if (this.$state.breeds.get(convertedValue)) {
+      this.onSearch(this.$state.breeds.get(convertedValue));
+      this.selectBox.value = '';
+    } else {
+      new Toast(document.querySelector('#app'), {
+        message: '입력하신 검색어에 해당하는 고양이 종이 없습니다.',
+      });
+    }
+  }
+
   setState(nextState) {
-    this.state = nextState;
+    this.$state = { ...this.$state, ...nextState };
     this.render();
   }
 
   render() {
-    this.$target.innerHTML = '';
+    this.$wrapper.innerHTML = '';
     const label = document.createElement('label');
     label.setAttribute('for', 'cat-breed-choice');
     label.textContent = '고양이 종을 선택해주세요:';
 
-    const selectBox = document.createElement('input');
-    selectBox.id = 'select-box';
-    selectBox.type = 'text';
-    selectBox.setAttribute('list', 'cat-list');
-    selectBox.autofocus = true;
-    selectBox.placeholder = 'Pick a breed';
+    this.selectBox = document.createElement('input');
+    this.selectBox.id = 'select-box';
+    this.selectBox.type = 'text';
+    this.selectBox.setAttribute('list', 'cat-list');
+    this.selectBox.placeholder = 'Pick a breed';
 
-    selectBox.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        const { value } = selectBox;
-        const convertedValue = value[0].toUpperCase() + value.slice(1);
-        if (this.state.breeds.get(convertedValue)) {
-          this.onSearch.searchSpecificCat(
-            this.state.breeds.get(convertedValue),
-          );
-          selectBox.value = '';
-        } else {
-          this.setToastMessage({
-            message: '검색어를 정상적으로 입력해주세요.',
-            toggle: true,
-          });
-        }
-      }
+    this.selectBox.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') this.setEvent();
     });
 
     const datalist = document.createElement('datalist');
     datalist.id = 'cat-list';
 
-    this.state.breeds.forEach((id, name) => {
+    this.$state.breeds.forEach((id, name) => {
       const option = document.createElement('option');
       option.value = name;
       datalist.appendChild(option);
@@ -76,22 +93,12 @@ export default class SearchSection {
     const button = document.createElement('button');
     button.textContent = '검색';
     button.addEventListener('click', () => {
-      const { value } = selectBox;
-      const convertedValue = value[0].toUpperCase() + value.slice(1);
-      if (this.state.breeds.get(convertedValue)) {
-        this.onSearch.searchSpecificCat(this.state.breeds.get(convertedValue));
-        selectBox.value = '';
-      } else {
-        this.setToastMessage({
-          message: '검색어를 정상적으로 입력해주세요.',
-          toggle: true,
-        });
-      }
+      this.setEvent();
     });
 
-    this.$target.appendChild(label);
-    this.$target.appendChild(selectBox);
-    this.$target.appendChild(datalist);
-    this.$target.appendChild(button);
+    this.$wrapper.appendChild(label);
+    this.$wrapper.appendChild(this.selectBox);
+    this.$wrapper.appendChild(datalist);
+    this.$wrapper.appendChild(button);
   }
 }
