@@ -36,19 +36,11 @@ export default class App {
 
     const searchSpecificCat = (id) => {
       setLoaderState(true);
-      let breedSwitch = true;
-      let imageSwitch = true;
-      const breedResponse = api.getBreedInfo(id);
-      breedResponse.then((nextState) => {
-        descriptionSection.setState(nextState);
-        if (!imageSwitch) setLoaderState(false);
-        breedSwitch = false;
-      });
       const imageResponse = api.getSpecificCats(id);
       imageResponse.then((data) => {
         gallerySection.setState(data);
-        if (!breedSwitch) setLoaderState(false);
-        imageSwitch = false;
+        descriptionSection.setState(data);
+        setLoaderState(false);
       });
     };
 

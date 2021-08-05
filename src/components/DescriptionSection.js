@@ -12,7 +12,8 @@ export default class DescriptionSection {
 
   render() {
     this.$target.innerHTML = '';
-    const [breedData] = this.$state;
+    console.log(this.$state);
+    const [breedData] = this.$state[0].breeds;
     console.log(breedData);
 
     const descriptionBox = document.createElement('article');

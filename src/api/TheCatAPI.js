@@ -16,7 +16,6 @@ const request = async (url) => {
 
 const api = {
   getBreeds: () => request(`${API_ENDPOINT}/breeds/`),
-  getBreedInfo: (id) => request(`${API_ENDPOINT}/breeds/search?q=${id}`),
   getSpecificCats: (id) =>
     request(`${API_ENDPOINT}/images/search?breed_ids=${id}&limit=12`),
   getRandomCats: () => request(`${API_ENDPOINT}/images/search?limit=12`),
