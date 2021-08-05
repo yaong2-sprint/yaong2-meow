@@ -10,7 +10,7 @@ const module = (env) => {
   return {
     mode: isDevelopment ? 'development' : 'production',
     devtool: isDevelopment ? 'inline-source-map' : 'hidden-source-map',
-    entry: './src/index.js',
+    entry: './src/main.js',
     output: {
       filename: 'bundle.[fullhash].js',
       path: path.resolve(__dirname, 'dist'),
