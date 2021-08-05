@@ -1,8 +1,10 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 const port = process.env.PORT || 3000;
+const __dirname = path.resolve();
 
-module.exports = (env) => {
+const module = (env) => {
   const isDevelopment = env === 'isDevelopment';
 
   return {
@@ -56,6 +58,7 @@ module.exports = (env) => {
         {
           test: /\.css$/,
           use: ['style-loader', 'css-loader'],
+          exclude: /node_modules/
         },
       ],
     },
@@ -78,8 +81,11 @@ module.exports = (env) => {
 
     plugins: [
       new HtmlWebpackPlugin({
-        template: 'public/index.html',
+        template: 'index.html',
       }),
+      new MiniCssExtractPlugin({
+        filename: 'style.css',
+      })
     ],
 
     devServer: {
@@ -92,3 +98,5 @@ module.exports = (env) => {
     },
   };
 };
+
+export default module;
