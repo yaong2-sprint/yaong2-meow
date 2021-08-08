@@ -1,0 +1,14 @@
+.gallery-section {
+  text-align: center;
+}
+
+.gallery-section div {
+  font-style: italic;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  margin: 25px;
+}

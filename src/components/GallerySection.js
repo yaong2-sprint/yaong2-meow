@@ -8,12 +8,11 @@ export default class GallerySection {
   }
 
   render() {
-    this.$wrapper.innerHTML = '';
+    this.$wrapper.innerHTML = `<h2>Gallery</h2><hr><div>귀여운 ${this.$props.imgList[0].breeds[0].name} 사진들입니다.</div>`;
     this.$props.imgList.forEach((cat) => {
       const catImage = document.createElement('img');
       catImage.className = 'cat-image';
       catImage.src = cat.url;
-
       this.$wrapper.appendChild(catImage);
     });
   }
