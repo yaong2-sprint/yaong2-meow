@@ -5,9 +5,7 @@ import ResultSection from './components/ResultSection.js';
 import Loader from './components/Loader.js';
 
 export default class App {
-  constructor($app, $globalState) {
-    this.$state = $globalState;
-
+  constructor($app) {
     const searchSection = new SearchSection($app, {
       setLoaderState: (nextState) => {
         loader.setState(nextState);
