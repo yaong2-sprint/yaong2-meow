@@ -3,9 +3,17 @@
 import SearchSection from './components/SearchSection.js';
 import ResultSection from './components/ResultSection.js';
 import Loader from './components/Loader.js';
+import DarkMode from './components/DarkMode.js';
 
 export default class App {
   constructor($app) {
+    const isLightMode = localStorage.getItem('isLightMode') === 'true';
+    if (isLightMode) {
+      document.querySelector('body').classList.remove('dark');
+    } else {
+      document.querySelector('body').classList.add('dark');
+    }
+
     const searchSection = new SearchSection($app, {
       setLoaderState: (nextState) => {
         loader.setState(nextState);
@@ -15,5 +23,13 @@ export default class App {
     const resultSection = new ResultSection($app);
 
     const loader = new Loader($app);
+
+    const darkMode = new DarkMode($app);
+
+    if (isLightMode) {
+      document.querySelector('.dark-mode-section').classList.remove('dark');
+    } else {
+      document.querySelector('.dark-mode-section').classList.add('dark');
+    }
   }
 }
