@@ -5,9 +5,7 @@ export default class Loader {
     $target.appendChild(this.$wrapper);
 
     // 초기 상태 설정
-    this.setState({
-      isLoading: true,
-    });
+    this.$state = { isLoading: true };
 
     this.render(); // 렌더링
   }

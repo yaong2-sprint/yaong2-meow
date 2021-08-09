@@ -12,9 +12,7 @@ export default class SearchSection {
     $target.appendChild(this.$wrapper);
 
     // 초기 상태 설정
-    this.setState({
-      breeds: new Map(),
-    });
+    this.$state = { breeds: new Map() };
 
     api.getBreeds().then((data) => {
       data.forEach((breed) => {
