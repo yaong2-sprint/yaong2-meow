@@ -1,0 +1,42 @@
+.dark-mode-section {
+  position: fixed;
+  width: 200px;
+  height: 50px;
+  right: 25px;
+  bottom: 20px;
+  box-shadow: rgb(4 4 161 / 10%) 0px 6px 12px 0px;
+  border: 1px solid rgb(246, 246, 246);
+  border-radius: 10px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.dark-mode-section {
+  background: white;
+}
+
+.dark-mode-section:hover {
+  background: #333;
+  color: #f2f2f2;
+}
+
+.dark-mode-section.dark {
+  background: #333;
+}
+
+.dark-mode-section.dark:hover {
+  background: #f2f2f2;
+  color: black;
+}
+
+.dark-mode-section .set {
+  color: #567ace;
+  font-weight: 500;
+}
+
+.dark-mode-section .unset {
+  color: #db706c;
+  font-weight: 500;
+}
