@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
+/* eslint no-unused-expressions: [{ allowTernary: true }] */
 import SearchSection from './components/SearchSection.js';
 import ResultSection from './components/ResultSection.js';
 import Loader from './components/Loader.js';
@@ -25,6 +26,10 @@ export default class App {
     const loader = new Loader($app);
 
     const darkMode = new DarkMode($app);
+
+    isLightMode
+      ? document.querySelector('.dark-mode-section').classList.remove('dark')
+      : document.querySelector('.dark-mode-section').classList.add('dark');
 
     if (isLightMode) {
       document.querySelector('.dark-mode-section').classList.remove('dark');
