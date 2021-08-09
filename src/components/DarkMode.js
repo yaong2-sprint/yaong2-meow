@@ -5,14 +5,11 @@ export default class DarkMode {
     $target.appendChild(this.$wrapper);
 
     // 초기 상태 설정
-    this.$state = localStorage.getItem('isLightMode')
-      ? {
-          isLightMode: localStorage.getItem('isLightMode') === 'true',
-        }
-      : {
-          isLightMode: window.matchMedia('(prefers-color-scheme: light)')
-            .matches,
-        };
+    this.$state = {
+      isLightMode: localStorage.getItem('isLightMode')
+        ? localStorage.getItem('isLightMode') === 'true'
+        : window.matchMedia('(prefers-color-scheme: light)').matches,
+    };
     localStorage.setItem('isLightMode', this.$state.isLightMode); // Local Storage에 다크모드 설정 여부 저장
     this.$wrapper.addEventListener('click', (e) => {
       e.stopPropagation();
