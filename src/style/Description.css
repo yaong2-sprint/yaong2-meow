@@ -9,7 +9,6 @@
   transform: translate(0, 0);
   opacity: 1;
   visibility: visible;
-  transition: 0.5s;
   margin-top: 15px;
 }
 
@@ -64,4 +63,5 @@
   padding-left: 20px;
   overflow: hidden;
   z-index: 2;
+  color: black;
 }

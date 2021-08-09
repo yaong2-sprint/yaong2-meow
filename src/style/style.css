@@ -10,10 +10,17 @@
 }
 
 body {
+  min-height: 100vh;
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: 0.5s;
+}
+
+.dark {
+  background: #333;
+  color: #f2f2f2;
 }
 
 #app {

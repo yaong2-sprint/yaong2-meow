@@ -4,6 +4,7 @@ import './style/Loader.css';
 import './style/Toast.css';
 import './style/Description.css';
 import './style/Gallery.css';
+import './style/DarkMode.css';
 
 // eslint-disable-next-line no-unused-vars
 const app = new App(document.querySelector('#app'));

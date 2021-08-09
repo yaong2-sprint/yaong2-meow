@@ -11,7 +11,7 @@ export default class Statistics {
     this.$wrapper.innerHTML = '';
     const itemList = [
       {
-        title: '❤️ 애정',
+        title: '😻 애정',
         value: this.$props.affection_level,
         color: '#f1d2e7',
       },
