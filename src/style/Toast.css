@@ -13,6 +13,7 @@
   transition: opacity 0.5s, visibility 0.5s, transform 0.5s;
   background: #d9598c;
   color: #fff;
+  box-shadow: rgb(4 4 161 / 10%) 0px 6px 12px 0px;
   z-index: 10000;
 }
 
