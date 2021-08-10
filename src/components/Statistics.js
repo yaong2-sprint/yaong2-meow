@@ -1,8 +1,11 @@
 export default class Statistics {
   constructor($target, $props) {
     this.$props = $props;
-    this.$wrapper = document.createElement('div');
+    this.$wrapper = document.createElement('article');
     this.$wrapper.className = 'statistics';
+    const header = document.createElement('h3');
+    header.textContent = 'Statistics';
+    this.$wrapper.appendChild(header);
     $target.appendChild(this.$wrapper);
     this.render();
   }

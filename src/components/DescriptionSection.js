@@ -12,15 +12,18 @@ export default class DescriptionSection {
 
   render() {
     this.$wrapper.innerHTML = '';
-    const descriptionBox = document.createElement('article');
+    const descriptionBox = document.createElement('section');
     descriptionBox.classList.add('description-box');
+    const header = document.createElement('header');
+    header.classList.add('desc-header');
+    descriptionBox.appendChild(header);
     if (!this.$props.breedInfo) {
-      descriptionBox.innerHTML = `
+      header.innerHTML = `
       <h2>죄송합니다.</h2>
       <p>이 종에 대한 상세 정보는 제공되지 않습니다.</p>
     `;
     } else {
-      descriptionBox.innerHTML = `
+      header.innerHTML = `
       <h2>${this.$props.breedInfo?.name}</h2>
       <p>${this.$props.breedInfo?.description}</p>
       <h3>Basic Information</h3>
@@ -29,11 +32,12 @@ export default class DescriptionSection {
       }"/>${this.$props.breedInfo.origin}</p>
       <p>평균 수명: ${this.$props.breedInfo?.life_span}년</p>
       <p>몸무게: ${this.$props.breedInfo?.weight.metric}kg</p>
-      <h3>Statistics</h3>
       `;
       new Statistics(descriptionBox, this.$props.breedInfo);
     }
     this.$wrapper.appendChild(descriptionBox);
-    this.$wrapper.classList.remove('mount');
+    setTimeout(() => {
+      this.$wrapper.classList.remove('mount');
+    }, 100);
   }
 }

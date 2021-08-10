@@ -10,6 +10,7 @@
   opacity: 1;
   visibility: visible;
   margin-top: 15px;
+  transition: transform 0.75s, opacity 0.75s, visibility 0.75s;
 }
 
 .description-section.mount {
@@ -31,11 +32,15 @@
   justify-content: center;
 }
 
-.description-box p {
+.desc-header {
+  text-align: center;
+}
+
+.desc-header p {
   margin: 0px;
 }
 
-.description-box p img {
+.desc-header p img {
   margin: 5px;
   width: 20px;
   height: 20px;
@@ -44,6 +49,7 @@
 }
 
 .statistics {
+  margin-top: 20px;
   width: 100%;
 }
 

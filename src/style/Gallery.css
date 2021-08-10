@@ -1,8 +1,9 @@
 .gallery-section {
   text-align: center;
+  margin-top: 20px;
 }
 
-.gallery-section div {
+.gallery-section p {
   font-style: italic;
 }
 
