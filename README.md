@@ -1,8 +1,15 @@
-<h1 align="center">🐱 야옹이 보구가</h1>
+<h1 align="center">
+  🐱 야옹이 보구가
+  <a href="https://angry-euclid-5e640d.netlify.app/">
+    <img src="https://api.netlify.com/api/v1/badges/0b9300e0-e795-4dac-88f8-ffdce86798c8/deploy-status" alt="netlify_success" />
+  </a>
+</h1>
 <p align="center">야옹이 좋아하는 사람들을 위한 야옹이 능력치/사진 검색기</p>
 <div align="center">
   <img src="readme/main.gif" alt="main_page" />
 </div>
+
+[🐱 야옹이 보구가](https://angry-euclid-5e640d.netlify.app/)
 
 ## Motivation
 요즘 대세는 바닐라스크립트다 :tada:
