@@ -39,12 +39,23 @@ export default class SearchSection {
     });
   }
 
+  onRandomSearch() {
+    this.$props.setLoaderState({ isLoading: true });
+    api.getRandomCats().then((data) => {
+      const resultSection = document.querySelector('.result-section');
+      resultSection.innerHTML = '';
+      new GallerySection(resultSection, {
+        imgList: data,
+        isRandom: true,
+      });
+      this.$props.setLoaderState({ isLoading: false });
+    });
+  }
+
   setEvent() {
     const { value } = this.selectBox;
     if (!value) {
-      new Toast(document.querySelector('#app'), {
-        message: '검색어가 입력되지 않았습니다.',
-      });
+      this.onRandomSearch();
       return;
     }
     const convertedValue = value[0].toUpperCase() + value.slice(1);

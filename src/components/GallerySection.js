@@ -8,13 +8,18 @@ export default class GallerySection {
   }
 
   render() {
-    this.$wrapper.innerHTML = `<h2>Gallery</h2><hr><div>귀여운 ${this.$props.imgList[0].breeds[0].name} 사진들입니다.</div>`;
+    this.$wrapper.innerHTML = '<h2>Gallery</h2>';
+    const paragraph = document.createElement('p');
+    paragraph.textContent = this.$props.isRandom
+      ? `검색어를 입력하지 않으셔서 랜덤으로 보여드립니다.`
+      : `귀여운 ${this.$props.imgList[0].breeds[0].name} 사진들입니다.`;
+    this.$wrapper.appendChild(paragraph);
     this.$props.imgList.forEach((cat, index) => {
       const catImage = document.createElement('img');
       catImage.className = 'cat-image';
       catImage.loading = 'lazy';
       catImage.src = cat.url;
-      catImage.alt = `${this.$props.imgList[0].breeds[0].name} image ${index}`;
+      catImage.alt = `cat image ${index}`;
       this.$wrapper.appendChild(catImage);
     });
   }
