@@ -1,0 +1,36 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url('https://rsms.me/inter/inter.css');
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, 'BlinkMacSystemFont', 'Apple SD Gothic Neo',
+    'Inter', 'Noto Sans KR', 'Spoqa Han Sans', 'Segoe UI', Sans-Serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: 0.5s;
+}
+
+.dark {
+  background: #333;
+  color: #f2f2f2;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,8 +1,8 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-const port = process.env.PORT || 3000;
-const __dirname = path.resolve();
+
+const dirname = path.resolve();
 
 const module = (env) => {
   const isDevelopment = env === 'isDevelopment';
@@ -10,10 +10,10 @@ const module = (env) => {
   return {
     mode: isDevelopment ? 'development' : 'production',
     devtool: isDevelopment ? 'inline-source-map' : 'hidden-source-map',
-    entry: './src/index.js',
+    entry: './src/main.js',
     output: {
       filename: 'bundle.[fullhash].js',
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(dirname, 'dist'),
       publicPath: '/',
     },
     module: {
@@ -58,25 +58,9 @@ const module = (env) => {
         {
           test: /\.css$/,
           use: ['style-loader', 'css-loader'],
-          exclude: /node_modules/
+          exclude: /node_modules/,
         },
       ],
-    },
-
-    resolve: {
-      extensions: ['.js'],
-      alias: {
-        '@components': path.resolve(__dirname, 'src/components'),
-        '@pages': path.resolve(__dirname, 'src/pages'),
-        '@assets': path.resolve(__dirname, 'src/assets'),
-        '@mocks': path.resolve(__dirname, 'src/mocks'),
-        '@repository': path.resolve(__dirname, 'src/repository'),
-        '@routes': path.resolve(__dirname, 'src/routes'),
-        '@store': path.resolve(__dirname, 'src/store'),
-        '@style': path.resolve(__dirname, 'src/style'),
-        '@utils': path.resolve(__dirname, 'src/utils'),
-        '@context': path.resolve(__dirname, 'src/context'),
-      },
     },
 
     plugins: [
@@ -85,7 +69,7 @@ const module = (env) => {
       }),
       new MiniCssExtractPlugin({
         filename: 'style.css',
-      })
+      }),
     ],
 
     devServer: {
@@ -94,7 +78,7 @@ const module = (env) => {
       stats: 'errors-only',
       open: true,
       historyApiFallback: true,
-      publicPath: '/'
+      publicPath: '/',
     },
   };
 };
