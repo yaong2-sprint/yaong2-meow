@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'BMDOHYEON';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMDOHYEON.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.search-section {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-section * {
+  text-align: center;
+  transform: translate(0, 0);
+  opacity: 1;
+  visibility: visible;
+  transition: transform 0.75s, opacity 0.75s, visibility 0.75s;
+}
+
+.title {
+  font-family: 'BMDOHYEON';
+  font-size: 5rem;
+}
+
+.search-section .mount {
+  transform: translate(0, 15px);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.search-button {
+  margin-left: 5px;
+}

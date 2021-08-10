@@ -76,9 +76,16 @@ export default class SearchSection {
 
   render() {
     this.$wrapper.innerHTML = '';
-    const label = document.createElement('label');
-    label.setAttribute('for', 'cat-breed-choice');
-    label.textContent = '고양이 종을 선택해주세요:';
+    const header = document.createElement('header');
+    header.classList.add('title', 'mount');
+    header.innerHTML = '고양이<br/ >보구가';
+
+    const label = document.createElement('section');
+    label.classList.add('directive', 'mount');
+    label.textContent = '보고 싶은 🐱 고양이 종을 선택해주세요';
+
+    const inputSection = document.createElement('section');
+    inputSection.classList.add('input-section', 'mount');
 
     this.selectBox = document.createElement('input');
     this.selectBox.id = 'select-box';
@@ -100,14 +107,27 @@ export default class SearchSection {
     });
 
     const button = document.createElement('button');
+    button.className = 'search-button';
     button.textContent = '검색';
     button.addEventListener('click', () => {
       this.setEvent();
     });
 
+    this.$wrapper.appendChild(header);
     this.$wrapper.appendChild(label);
-    this.$wrapper.appendChild(this.selectBox);
-    this.$wrapper.appendChild(datalist);
-    this.$wrapper.appendChild(button);
+    inputSection.appendChild(this.selectBox);
+    inputSection.appendChild(datalist);
+    inputSection.appendChild(button);
+    this.$wrapper.appendChild(inputSection);
+
+    setTimeout(() => {
+      header.classList.remove('mount');
+    }, 100);
+    setTimeout(() => {
+      label.classList.remove('mount');
+    }, 600);
+    setTimeout(() => {
+      inputSection.classList.remove('mount');
+    }, 1100);
   }
 }
