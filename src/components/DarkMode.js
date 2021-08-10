@@ -7,7 +7,7 @@ export default class DarkMode {
     // 초기 상태 설정
     this.$state = {
       isLightMode: localStorage.getItem('isLightMode')
-        ? localStorage.getItem('isLightMode') === 'true'
+        ? true
         : window.matchMedia('(prefers-color-scheme: light)').matches,
     };
     localStorage.setItem('isLightMode', this.$state.isLightMode); // Local Storage에 다크모드 설정 여부 저장

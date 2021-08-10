@@ -8,7 +8,10 @@ import DarkMode from './components/DarkMode.js';
 
 export default class App {
   constructor($app) {
-    this.isLightMode = localStorage.getItem('isLightMode') === 'true';
+    this.isLightMode =
+      localStorage.getItem('isLightMode') === 'true'
+        ? true
+        : window.matchMedia('(prefers-color-scheme: light)').matches;
     this.setDarkMode('body');
 
     const searchSection = new SearchSection($app, {
