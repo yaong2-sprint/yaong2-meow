@@ -1,4 +1,3 @@
-import axios from 'axios';
 import ApiError from '../error/APIError.js';
 
 const API_ENDPOINT = 'https://api.thecatapi.com/v1';
@@ -7,8 +6,8 @@ const ERROR_MESSAGE =
 
 const request = async (url) => {
   try {
-    const response = await axios.get(url);
-    return response.data;
+    const response = await fetch(url);
+    return await response.json();
   } catch (e) {
     throw new ApiError(ERROR_MESSAGE, 'API Error', 500);
   }
