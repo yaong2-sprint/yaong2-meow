@@ -10,7 +10,7 @@
 
 **라이브러리나 프레임워크의 도움 없이**, 오직 바닐라스크립트로만!
 
-프로젝트 기본 설정부터 컴포넌트 기본 구조, 기능 구현까지 멘땅에 헤딩 🤯 하면서 바닐라스크립트 제대로 익혀보자 :fire:
+프로젝트 기본 설정부터 컴포넌트 구조, 기능 구현까지 멘땅에 헤딩 🤯 하면서 바닐라스크립트 제대로 익혀보자 :fire:
 
 ## Project Main Goal
 * 선언형 프로그래밍 방식으로 개발하자.
@@ -20,7 +20,7 @@
 * 읽기 쉬운 코드를 쓰자.
 * 불필요한 API 호출은 최소화하자.
 * 사용자 경험을 신경쓰자.
-* [HTML Semantic Tags](https://www.w3schools.com/html/html5_semantic_elements.asp)를 가장 **올바르게** 적용하자.
+* [HTML Semantic Tags](https://www.w3schools.com/html/html5_semantic_elements.asp)를 **올바르게** 적용하자.
 
 ## Main Feature
 * 내가 키우고 싶은 고양이 종을 검색하면, 해당 고양이 종에 해당하는 고양이들의 능력치와 사진을 제공해준다 :kissing_cat:
