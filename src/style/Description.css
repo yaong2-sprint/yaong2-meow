@@ -32,7 +32,8 @@
   justify-content: center;
 }
 
-.desc-header {
+.desc-header,
+.statistics h3 {
   text-align: center;
 }
 
@@ -49,7 +50,6 @@
 }
 
 .statistics {
-  margin-top: 20px;
   width: 100%;
 }
 

@@ -3,15 +3,15 @@ export default class Statistics {
     this.$props = $props;
     this.$wrapper = document.createElement('article');
     this.$wrapper.className = 'statistics';
-    const header = document.createElement('h3');
-    header.textContent = 'Statistics';
-    this.$wrapper.appendChild(header);
     $target.appendChild(this.$wrapper);
     this.render();
   }
 
   render() {
     this.$wrapper.innerHTML = '';
+    const header = document.createElement('h3');
+    header.textContent = 'Statistics';
+    this.$wrapper.appendChild(header);
     const itemList = [
       {
         title: '😻 애정',
