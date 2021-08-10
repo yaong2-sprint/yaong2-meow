@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve --open --hot",
-    "build": "babel src -d dist -w",
+    "build": "webpack --mode=production",
     "lint": "eslint src/**/*.js",
     "test": "jest"
   },
