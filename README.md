@@ -1,7 +1,8 @@
 <h1 align="center">🐱 야옹이 보구가</h1>
 <p align="center">야옹이 좋아하는 사람들을 위한 야옹이 능력치/사진 검색기</p>
-
-![](readme/main.gif)
+<div align="center">
+  <img src="readme/main.gif" alt="main_page" />
+</div>
 
 ## Motivation
 요즘 대세는 바닐라스크립트다 :tada:
