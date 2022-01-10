@@ -1,6 +1,6 @@
 <h1 align="center">
   🐱 야옹이 보구가
-  <a href="https://angry-euclid-5e640d.netlify.app/">
+  <a href="https://goyangee.netlify.app/">
     <img src="https://api.netlify.com/api/v1/badges/0b9300e0-e795-4dac-88f8-ffdce86798c8/deploy-status" alt="netlify_success" />
   </a>
 </h1>
@@ -9,7 +9,7 @@
   <img src="readme/main.gif" alt="main_page" />
 </div>
 
-[🐱 야옹이 보구가](https://angry-euclid-5e640d.netlify.app/)
+[🐱 야옹이 보구가](https://goyangee.netlify.app/)
 
 ## Motivation
 요즘 대세는 바닐라스크립트다 :tada:
